@@ -64,12 +64,6 @@ Open:
 http://127.0.0.1:8000
 ```
 
-## Important
-
-The uploaded notebook refers to `spam.csv`, but that CSV was not included in the uploaded file. Therefore this ZIP does not fabricate or replace your training dataset. Add your original `spam.csv` before running `train_model.py`.
-
-The generated `model/model.pkl` and `model/vectorizer.pkl` are intentionally created locally from your dataset rather than shipping a different pre-trained model.
-
 ## API
 
 Health check:
