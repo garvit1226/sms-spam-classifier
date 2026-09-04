@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Spam Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+            <div class="badge">ML PROJECT</div>
+            <h1>SMS Spam Classifier</h1>
+            <p class="subtitle">
+                Enter an SMS message and let the machine-learning model classify it
+                as <strong>spam</strong> or <strong>real</strong>.
+            </p>
+
+            <form action="/predict" method="post">
+                <label for="message">Your SMS</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="7"
+                    placeholder="Example: Congratulations! You have won a free prize..."
+                    required
+                >{{ message or "" }}</textarea>
+
+                <button type="submit">Check Message</button>
+            </form>
+
+            {% if error %}
+            <div class="result error">
+                <span class="result-title">Error</span>
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+
+            {% if prediction %}
+            <div class="result {{ css_class }}">
+                <span class="result-title">Prediction</span>
+                <h2>{{ prediction }}</h2>
+                <p>Model confidence: <strong>{{ confidence }}%</strong></p>
+            </div>
+            {% endif %}
+
+            <p class="footer">
+                Built with FastAPI, HTML/CSS and Multinomial Naive Bayes.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
